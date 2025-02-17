@@ -68,10 +68,10 @@ let swordPower = 160;
 
 // Amélioration Niveau prix
 let cavePrice = 300000;
-let mine1Price = 1200000;
-let mine2Price = 2400000;
-let filonMinePrice = 4800000;
-let netherPrice= 9600000;
+let mine1Price = 4000000;
+let mine2Price = 24000000;
+let filonMinePrice = 48000000;
+let netherPrice= 1000000000;
 
 
 // Boolean Activé ou non pour les améliorations
@@ -102,7 +102,7 @@ let toolsCount = {
 
 
 // ------Variables Globales----------\\
-let count = 1000000000000000; // COMPTEUR DES COOKIES
+let count = 0; // COMPTEUR DES COOKIES
 let sec = 0; // COMPTEUR DES COOKIES PAR SECONDES 
 let interval; // Variable Interval
 
