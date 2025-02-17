@@ -507,7 +507,7 @@ buttonWorld.addEventListener('click', () => {
     }
 
     if(caveBool === true && mine1Bool === true && mine2Bool === true && filonMineBool === true && netherBool === false){
-        if(count>=cavePrice){
+        if(count>=netherPrice){
             if(shovel && axe && pickaxe && sword === true){
                 update5();
                 netherBool = true;
@@ -517,18 +517,18 @@ buttonWorld.addEventListener('click', () => {
                 pickaxe=false;
                 sword=false;
                 // Change Price Outils
-                shovelPrice*=2;
-                axePrice*=2;
-                pickaxePrice*=2;
-                swordPrice*=2;
-                // x2 sur les gains des outils !! :
-                shovelPower*=2;
-                axePower*=2;
-                pickaxePower*=2;
-                swordPower*=2;
+                shovelPrice*=4;
+                axePrice*=4;
+                pickaxePrice*=4;
+                swordPrice*=4;
+                // x4 sur les gains des outils !! :
+                shovelPower*=4;
+                axePower*=4;
+                pickaxePower*=4;
+                swordPower*=4;
                 nextWorld.innerText = "The End";
                 // Enlever les cookies nécessaire au level up du porte monnaie de l'utilisateur
-                updateRmCookie(cavePrice);
+                updateRmCookie(netherPrice);
                   // Update visuel
                 updatePrice();
                 updatePower()
@@ -537,12 +537,12 @@ buttonWorld.addEventListener('click', () => {
                 window.alert("Vous Avez assez d'argent mais pas tout les outils !");
             };
         }
-    else if(count<cavePrice){
+    else if(count<netherPrice){
         window.alert("Pas assez de Cookies !");
         }
     }
     if(caveBool === true && mine1Bool === true && mine2Bool === true && filonMineBool === false && netherBool === false){
-        if(count>=cavePrice){
+        if(count>=filonMinePrice){
             if(shovel && axe && pickaxe && sword === true){
                 update4();
                 filonMineBool = true;
@@ -552,18 +552,18 @@ buttonWorld.addEventListener('click', () => {
                 pickaxe=false;
                 sword=false;
                 // Change Price Outils
-                shovelPrice*=2;
-                axePrice*=2;
-                pickaxePrice*=2;
-                swordPrice*=2;
-                // x2 sur les gains des outils !! :
-                shovelPower*=2;
-                axePower*=2;
-                pickaxePower*=2;
-                swordPower*=2;
+                shovelPrice*=4;
+                axePrice*=4;
+                pickaxePrice*=4;
+                swordPrice*=4;
+                // x4 sur les gains des outils !! :
+                shovelPower*=4;
+                axePower*=4;
+                pickaxePower*=4;
+                swordPower*=4;
                 nextWorld.innerText = "Nether World";
                 // Enlever les cookies nécessaire au level up du porte monnaie de l'utilisateur
-                updateRmCookie(cavePrice);
+                updateRmCookie(filonMinePrice);
                   // Update visuel
                 updatePrice();
                 updatePower()
@@ -573,34 +573,34 @@ buttonWorld.addEventListener('click', () => {
                 window.alert("Vous Avez assez d'argent mais pas tout les outils !");
             };
         }
-    else if(count<cavePrice){
+    else if(count<filonMinePrice){
         window.alert("Pas assez de Cookies !");
         }
     }
 
     if(caveBool === true && mine1Bool === true && mine2Bool === false && filonMineBool === false && netherBool === false){
-        if(count>=cavePrice){
+        if(count>=mine2Price){
             if(shovel && axe && pickaxe && sword === true){
                 update3();
                 mine2Bool = true;
-                cavePrice*=2;
+
                 shovel=false;
                 axe=false;
                 pickaxe=false;
                 sword=false;
                 // Change Price Outils
-                shovelPrice*=2;
-                axePrice*=2;
-                pickaxePrice*=2;
-                swordPrice*=2;
+                shovelPrice*=4;
+                axePrice*=4;
+                pickaxePrice*=4;
+                swordPrice*=4;
                 // x2 sur les gains des outils !! :
-                shovelPower*=2;
-                axePower*=2;
-                pickaxePower*=2;
-                swordPower*=2;
+                shovelPower*=4;
+                axePower*=4;
+                pickaxePower*=4;
+                swordPower*=4;
                 nextWorld.innerText = "Diamond Mine";
                 // Enlever les cookies nécessaire au level up du porte monnaie de l'utilisateur
-                updateRmCookie(cavePrice);
+                updateRmCookie(mine2Price);
                   // Update visuel
                 updatePrice();
                 updatePower()
@@ -610,34 +610,33 @@ buttonWorld.addEventListener('click', () => {
                 window.alert("Vous Avez assez d'argent mais pas tout les outils !");
             };
         }
-    else if(count<cavePrice){
+    else if(count<mine1Price){
         window.alert("Pas assez de Cookies !");
         }
     }
     
     if(caveBool === true && mine1Bool === false && mine2Bool === false && filonMineBool === false && netherBool === false){
-        if(count>=cavePrice){
+        if(count>=mine1Price){
             if(shovel && axe && pickaxe && sword === true){
                 update2();
                 mine1Bool = true;
-                cavePrice*=2;
                 shovel=false;
                 axe=false;
                 pickaxe=false;
                 sword=false;
                 // Change Price Outils
-                shovelPrice*=2;
-                axePrice*=2;
-                pickaxePrice*=2;
-                swordPrice*=2;
+                shovelPrice*=4;
+                axePrice*=4;
+                pickaxePrice*=4;
+                swordPrice*=4;
                 // x2 sur les gains des outils !! :
-                shovelPower*=2;
-                axePower*=2;
-                pickaxePower*=2;
-                swordPower*=2;
+                shovelPower*=4;
+                axePower*=4;
+                pickaxePower*=4;
+                swordPower*=4;
                 nextWorld.innerText = "Iron Mine";
                 // Enlever les cookies nécessaire au level up du porte monnaie de l'utilisateur
-                updateRmCookie(cavePrice);
+                updateRmCookie(mine1Price);
                   // Update visuel
                 updatePrice();
                 updatePower()
@@ -647,7 +646,7 @@ buttonWorld.addEventListener('click', () => {
                 window.alert("Vous Avez assez d'argent mais pas tout les outils !");
             };
         }
-    else if(count<cavePrice){
+    else if(count<mine1Price){
         window.alert("Pas assez de Cookies !");
         }
     }
@@ -655,22 +654,21 @@ buttonWorld.addEventListener('click', () => {
     if(caveBool === false && mine1Bool === false && mine2Bool === false && filonMineBool === false && netherBool === false){
         if(count>=cavePrice){
             if(shovel && axe && pickaxe && sword === true){
-                cavePrice*=2;
                 caveBool=true;
                 shovel=false;
                 axe=false;
                 pickaxe=false;
                 sword=false;
                 // Change Price Outils
-                shovelPrice*=2;
-                axePrice*=2;
-                pickaxePrice*=2;
-                swordPrice*=2;
+                shovelPrice*=4;
+                axePrice*=4;
+                pickaxePrice*=4;
+                swordPrice*=4;
                 // x2 sur les gains des outils !! :
-                shovelPower*=2;
-                axePower*=2;
-                pickaxePower*=2;
-                swordPower*=2;
+                shovelPower*=4;
+                axePower*=4;
+                pickaxePower*=4;
+                swordPower*=4;
                 nextWorld.innerText = "Gold Mine";
                 // Enlever les cookies nécessaire au level up du porte monnaie de l'utilisateur
                 updateRmCookie(cavePrice);

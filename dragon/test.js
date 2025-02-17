@@ -52,6 +52,7 @@ function dead(){
     vie_boss = 0;
     localStorage.clear();
 }
+updateRmCookie(0);
 
 function updateRmCookie(nombre){ // Enleve un Nombre de Cookie et Update le compteur
     let displayCount;
