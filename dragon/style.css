@@ -38,11 +38,12 @@ body {
 .main .cookie .dragon img {
     width: 100%;
     cursor: pointer;
-    transition: 0.25s;
+    transition: 0.09s;
 }
 
 .dragon.active img{
     transform: scale(0.8);
+    
     filter: brightness(0) saturate(100%) invert(28%) sepia(92%) saturate(4605%) hue-rotate(350deg) brightness(100%) contrast(117%) opacity(100%);
 }
 

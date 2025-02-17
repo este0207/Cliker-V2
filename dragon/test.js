@@ -6,18 +6,29 @@ const button1 = document.querySelector("#add1");
 const button2 = document.querySelector("#add2");
 const button3 = document.querySelector("#add3");
 const button4 = document.querySelector("#add4");
+const buttonEnd = document.querySelector("#add5");
 const screen = document.querySelector(".cookie");
+const price1 = document.querySelector("#power1")
+const price2 = document.querySelector("#power2")
+const price3 = document.querySelector("#power3")
+const price4 = document.querySelector("#power4")
+count = parseInt(localStorage.getItem('cookieCount'), 10) || count;
+const countDiv = document.getElementById('count');
+const cookieTitleCount = " Cookies - Cookie-Cliker";
+
+
 //variables
 let vie_boss = 101;
+let regen = 20;
 let interval1;
 var myAudio = document.createElement("audio");
 myAudio.src = "./sound/Minecraft TNT Explosion - Sound Effect (HD) (mp3cut.net).mp3";
 
 // Prix Crystaux
-let Crystaux1price = 10;
-let Crystaux2price = 100; 
-let Crystaux3price = 500; 
-let Crystaux4price = 1000;
+let Crystaux1price = 1000000000;
+let Crystaux2price = 10000000000; 
+let Crystaux3price = 500000000000; 
+let Crystaux4price = 1000000000000;
 
 // Boolean Activé ou non pour les améliorations
 let Crystaux1 = false;
@@ -39,6 +50,7 @@ function dead(){
     explode.style.annimationPlayState = "play"
     myAudio.play();
     vie_boss = 0;
+    localStorage.clear();
 }
 
 function updateRmCookie(nombre){ // Enleve un Nombre de Cookie et Update le compteur
@@ -59,8 +71,8 @@ function updateRmCookie(nombre){ // Enleve un Nombre de Cookie et Update le comp
     }
     countDiv.innerText = displayCount; 
     document.getElementById('title').innerText = displayCount + cookieTitleCount; 
-    saveProgression();
 }
+buttonEnd.style.display = "none";
 
 
 if (vie_boss === 0) {
@@ -71,7 +83,7 @@ if (vie_boss != 0){
     // regene
     interval1 = setInterval(() => {
         if (vie_boss <= 100){
-            vie_boss+=4;
+            vie_boss+=regen;
         }
     }, 400);
     // actualisation de la barre de vie
@@ -102,12 +114,13 @@ dragon.addEventListener("click", () => {
         setTimeout(() => {
         explode.style.display = "none"
         },300);
-        screen.style.background = "url(../images/End_Poem_Header.webp)";
+        screen.style.background = "url(./sound/IMG_4070.JPG)";
         screen.style.backgroundRepeat = 'no-repeat'
         screen.style.backgroundPosition = 'center',
         screen.style.backgroundSize = 'cover',
         screen.style.zindex = "11";
         life.style.display = "none";
+        buttonEnd.style.display = "block";
     }
     
 });
@@ -117,10 +130,50 @@ button1.addEventListener('click', () => {
         Crystaux1 = true;
         updateRmCookie(Crystaux1price)
         toolsCount.Crystaux1 += 1;
+        regen-=5
+        
     }
     else if(count<Crystaux1price){
         window.alert("Pas assez de Cookies !");
     }
+});
+button2.addEventListener('click', () => {
+    if(count>=Crystaux2price){ // Si Nombre de Cookies est supérieur ou égal au prix du bouton
+        Crystaux2 = true;
+        updateRmCookie(Crystaux2price)
+        toolsCount.Crystaux2 += 1;
+        regen-=5;
+    }
+    else if(count<Crystaux2price){
+        window.alert("Pas assez de Cookies !");
+    }
+});
+button3.addEventListener('click', () => {
+    if(count>=Crystaux3price){ // Si Nombre de Cookies est supérieur ou égal au prix du bouton
+        Crystaux3 = true;
+        updateRmCookie(Crystaux3price)
+        toolsCount.Crystaux3 += 1;
+        regen-=5;
+    }
+    else if(count<Crystaux3price){
+        window.alert("Pas assez de Cookies !");
+    }
+});
+button4.addEventListener('click', () => {
+    if(count>=Crystaux4price){ // Si Nombre de Cookies est supérieur ou égal au prix du bouton
+        Crystaux3 = true;
+        updateRmCookie(Crystaux4price)
+        toolsCount.Crystaux4 += 1;
+        regen-=5;
+    }
+    else if(count<Crystaux4price){
+        window.alert("Pas assez de Cookies !");
+    }
+});
+
+
+buttonEnd.addEventListener('click', () => {
+    document.location.href = '../index.html'
 });
 
 // document.getElementsByClassName("life").style.gridTemplateColumns = `${vie_boss}% 1fr`;

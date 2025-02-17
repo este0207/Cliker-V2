@@ -10,6 +10,11 @@
 const countDiv = document.getElementById('count');
 const secDiv = document.getElementById('sec');
 const block = document.getElementById('block');
+//nombre de tools
+const nbr1 = document.querySelector("#nbr1");
+const nbr2 = document.querySelector("#nbr2");
+const nbr3 = document.querySelector("#nbr3");
+const nbr4 = document.querySelector("#nbr4");
 
 // Text :
 const text1 = document.getElementById('text1');
@@ -33,7 +38,7 @@ const buyAxeButton = document.querySelector('.shop #add2');
 const buyPickaxeButton = document.querySelector('.shop #add3');
 const buySwordButton = document.querySelector('.shop #add4');
 const buttonWorld = document.querySelector('.shop #levelup'); 
-const nextWorld = document.getElementById('nextworld');
+const nextWorld = document.querySelector('#nextworld');
 
 
 const main = document.querySelector('.main .cookie'); // divs pour Front End
@@ -83,13 +88,15 @@ let mine1Bool = false;
 let mine2Bool = false;
 let filonMineBool = false;
 let netherBool = false;
+let endBool = false;
 
 let toolsCount = {
-    shovel,
-    axe,
-    pickaxe,
-    sword,
+    shovel:0,
+    axe:0,
+    pickaxe:0,
+    sword:0,
 }
+
 
 // ----------------------------------------\\
 
@@ -231,6 +238,18 @@ function updatePower(){ // UPDATE POWER OF TOOLS /S
     power3.innerText = pickaxePower + secTitle;
     power4.innerText = swordPower + secTitle;
 }
+function updateNbr1(){
+    nbr1.innerText = toolsCount.shovel;
+}
+function updateNbr2(){
+    nbr2.innerText = toolsCount.axe;
+}
+function updateNbr3(){
+    nbr3.innerText = toolsCount.pickaxe;
+}
+function updateNbr4(){
+    nbr4.innerText = toolsCount.sword;
+}
 
 function saveProgression() { // SAVE LA PROGRESSION ⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️ A ENCAPSULER  // JSON
     localStorage.setItem('cookieSec', sec);
@@ -255,6 +274,8 @@ function saveProgression() { // SAVE LA PROGRESSION ⛔️⛔️⛔️⛔️⛔�
     localStorage.setItem('mine1Bool', mine1Bool);
     localStorage.setItem('mine2Bool', mine2Bool);
     localStorage.setItem('filonMineBool', filonMineBool);
+    localStorage.setItem('netherBool', netherBool);
+    localStorage.setItem('endBool', endBool);
 }
 function loadSave() { // LOAD SAUVEGARDE ⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️⛔️ A ENCAPSULER  // JSON
     // Pattern pour les INT :
@@ -284,6 +305,38 @@ function loadSave() { // LOAD SAUVEGARDE ⛔️⛔️⛔️⛔️⛔️⛔️⛔
     mine1Bool = localStorage.getItem('mine1Bool') === 'true' || false;
     mine2Bool = localStorage.getItem('mine2Bool') === 'true' || false;
     filonMineBool = localStorage.getItem('filonMineBool') === 'true' || false;
+    netherBool = localStorage.getItem('netherBool') === 'true' || false;
+    endBool = localStorage.getItem('endBool') === 'true' || false;
+    if(caveBool === false && mine1Bool === false && mine2Bool === false && filonMineBool === false && netherBool === false){
+        // nextWorld.innerText = "Cave World";
+    }
+    if(caveBool === true && mine1Bool === false && mine2Bool === false && filonMineBool === false && netherBool === false){
+        updateBackground();
+        nextWorld.innerText = "Gold Mine";
+    }
+    if(caveBool === true && mine1Bool === true && mine2Bool === false && filonMineBool === false && netherBool === false){
+        update2();
+        nextWorld.innerText = "Iron Mine";
+    }
+    if(caveBool === true && mine1Bool === true && mine2Bool === true && filonMineBool === false && netherBool === false){
+        update3();
+        nextWorld.innerText = "Diamond Mine";
+        console.log("test")
+    }
+    if(caveBool === true && mine1Bool === true && mine2Bool === true && filonMineBool === true && netherBool === false){
+        update4();
+        nextWorld.innerText = "Nether World";
+    }
+    if(caveBool === true && mine1Bool === true && mine2Bool === true && filonMineBool === true && netherBool === true){
+        update5();
+        nextWorld.innerText = "The End";
+    }
+    if(endBool === true){
+        document.location.href = './dragon/index.html'
+    }
+    updateAddCookie(0);
+    updatePower()
+    updatePrice()
 }
 
 function retrieveTools() { // FONCTION POUR RELANCER LES EVENTS LISTENERS 
@@ -338,14 +391,21 @@ function onStart(){
     if(count === 0){ // Si compteur à 0 affiche 0 cookies sur le titre
         document.getElementById('title').innerText = cookieNone;
     }
+
+    nextWorld.innerText = "Cave World";
     loadSave();
     retrieveTools();
     updateAddCookie();
+    updateNbr1()
+    updateNbr2()
+    updateNbr3()
+    updateNbr4()
     updatePrice();
     updatePower();
     console.log(toolsCount);
     console.log(count);
-    nextWorld.innerText = "Cave World";
+
+    
 }
 
 
@@ -363,11 +423,12 @@ image.addEventListener('click', () => {
 // 💞 - Bouton Bonus +1/s
 buyShovelButton.addEventListener('click', () => {
     if(count>=shovelPrice){ // Si Nombre de Cookies est supérieur ou égal au prix du bouton
+        toolsCount.shovel += 1;
         shovel = true;
         updateRmCookie(shovelPrice)
         sec += shovelPower;
         secDiv.innerText = sec +secTitle;
-        toolsCount.shovel += 1;
+        updateNbr1();
         interval = setInterval(() => {
             image.click();
             updateAddCookie(shovelPower-1);
@@ -381,11 +442,12 @@ buyShovelButton.addEventListener('click', () => {
 // 💞 - Bouton Bonus +2/s
 buyAxeButton.addEventListener('click', () => {
     if(count>=axePrice){
+        toolsCount.axe += 1;
         axe = true;
         updateRmCookie(axePrice)
         sec += axePower;
+        updateNbr2();
         secDiv.innerText = sec +secTitle;
-        toolsCount.axe += 1;
         interval = setInterval(() => {
             image.click(); // [1] - ANIMATION ET +1 AU COMPTEUR
             updateAddCookie(axePower-1);// [2] - Ajouter 1 cookies pour Matcher avec la Valeur de Sec (1+1=2)
@@ -399,11 +461,12 @@ buyAxeButton.addEventListener('click', () => {
 // 💞 - Bouton Bonus +5/s
 buyPickaxeButton.addEventListener('click', () => {
     if(count>=pickaxePrice){
+        toolsCount.pickaxe += 1;
         pickaxe = true;
         updateRmCookie(pickaxePrice)
         sec += pickaxePower;
+        updateNbr3();
         secDiv.innerText = sec +secTitle;
-        toolsCount.pickaxe += 1;
         interval = setInterval(() => {
             image.click(); // [1] - ANIMATION ET +1 AU COMPTEUR
             updateAddCookie(pickaxePower-1); // [2] - Ajouter 4 cookies pour Matcher avec la Valeur de Sec (1+4=5)
@@ -417,11 +480,12 @@ buyPickaxeButton.addEventListener('click', () => {
 // 💞 - Bouton Bonus +15/s
 buySwordButton.addEventListener('click', () => {
     if(count>=swordPrice){
-        sword = true;
+        toolsCount.sword += 1;
         updateRmCookie(swordPrice)
+        sword = true;
         sec += swordPower;
         secDiv.innerText = sec + secTitle;
-        toolsCount.sword += 1;
+        updateNbr4();
         interval = setInterval(() => {
             image.click();  // [1] - ANIMATION ET +1 AU COMPTEUR
             updateAddCookie(swordPower-1); // [2] - Ajouter 14 cookies pour Matcher avec la Valeur de Sec (1+14=15)
@@ -438,6 +502,7 @@ buttonWorld.addEventListener('click', () => {
     // Function Pattern for Level Up 
     // Cave Level UP
     if(caveBool === true && mine1Bool === true && mine2Bool === true && filonMineBool === true && netherBool === true){ 
+        endBool = true;
         document.location.href = './dragon/index.html'
     }
 
@@ -633,3 +698,8 @@ buttonWorld.addEventListener('click', () => {
 // 🚦- Début du jeu et checkup nécessaires
 
 onStart();
+
+setInterval(() => {
+    saveProgression();
+    
+}, 1000);
