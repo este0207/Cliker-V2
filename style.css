@@ -32,6 +32,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    padding-bottom: 15rem;
 }
 
 .main .cookie .image img {
@@ -70,6 +71,7 @@ body {
     margin: 0;
     margin-bottom: 20px;
     font-size: 30px;
+    color: white;
 }
 
 .cookie img {
