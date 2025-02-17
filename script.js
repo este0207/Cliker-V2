@@ -33,6 +33,8 @@ const buyAxeButton = document.querySelector('.shop #add2');
 const buyPickaxeButton = document.querySelector('.shop #add3');
 const buySwordButton = document.querySelector('.shop #add4');
 const buttonWorld = document.querySelector('.shop #levelup'); 
+const nextWorld = document.getElementById('nextworld');
+
 
 const main = document.querySelector('.main .cookie'); // divs pour Front End
 const container = document.querySelector('.main .shop'); // divs pour Front End
@@ -48,14 +50,14 @@ const cookieNone = "Cookies : none";
 
 // Amélioration Outils prix
 
-let shovelPrice = 10;
-let axePrice = 100; 
-let pickaxePrice = 500; 
-let swordPrice = 1000;
+let shovelPrice = 50;
+let axePrice = 250; 
+let pickaxePrice = 1500; 
+let swordPrice = 2700;
 
 // Amélioration Cookies/s 
 let shovelPower = 1; 
-let axePower = 12; 
+let axePower = 50; 
 let pickaxePower = 77;
 let swordPower = 160;
 
@@ -93,7 +95,7 @@ let toolsCount = {
 
 
 // ------Variables Globales----------\\
-let count; // COMPTEUR DES COOKIES
+let count = 1000000000000000; // COMPTEUR DES COOKIES
 let sec = 0; // COMPTEUR DES COOKIES PAR SECONDES 
 let interval; // Variable Interval
 
@@ -258,15 +260,15 @@ function loadSave() { // LOAD SAUVEGARDE ⛔️⛔️⛔️⛔️⛔️⛔️⛔
     // Pattern pour les INT :
     // variable = parseInt(localStorage.getitem('nomItem), Base de comptage || Valeur de base souhaitée); // valeur de base = null
     sec = parseInt(localStorage.getItem('cookieSec'), 10) || 0;
-    count = parseInt(localStorage.getItem('cookieCount'), 10) || 0;
+    count = parseInt(localStorage.getItem('cookieCount'), 10) || count;
     toolsCount.shovel = parseInt(localStorage.getItem('toolsCount.shovel'), 10) || 0;
     toolsCount.axe = parseInt(localStorage.getItem('toolsCount.axe'), 10) || 0;
     toolsCount.pickaxe = parseInt(localStorage.getItem('toolsCount.pickaxe'), 10) || 0;
     toolsCount.sword = parseInt(localStorage.getItem('toolsCount.sword'), 10) || 0;
-    shovelPrice = parseInt(localStorage.getItem('shovelPrice'), 10) || 10;
-    axePrice = parseInt(localStorage.getItem('axePrice'), 10) || 100;
-    pickaxePrice = parseInt(localStorage.getItem('pickaxePrice'), 10) || 500;
-    swordPrice = parseInt(localStorage.getItem('swordPrice'), 10) || 1000;
+    shovelPrice = parseInt(localStorage.getItem('shovelPrice'), 10) || shovelPrice;
+    axePrice = parseInt(localStorage.getItem('axePrice'), 10) || axePrice;
+    pickaxePrice = parseInt(localStorage.getItem('pickaxePrice'), 10) || pickaxePrice;
+    swordPrice = parseInt(localStorage.getItem('swordPrice'), 10) || swordPrice;
     shovelPower = parseInt(localStorage.getItem('shovelPower'), 10) || 1;
     axePower = parseInt(localStorage.getItem('axePower'), 10) || 12;
     pickaxePower = parseInt(localStorage.getItem('pickaxePower'), 10) || 77;
@@ -343,27 +345,8 @@ function onStart(){
     updatePower();
     console.log(toolsCount);
     console.log(count);
+    nextWorld.innerText = "Cave World";
 }
-
-
-
-
-
-// Switch pour les prix des améliorations
-
-// 🚨 FONCTION DEPRECIE POUR LE CODE ACTUEL 🚨
-
-// switch(count){
-//     case count<10:
-//         buyShovelButton.style.background = 'gray';
-//         button2.style.background = 'gray';
-//     case count === 10:
-//         buyShovelButton.style.background = 'white';
-//     case count === 100:
-//         button2.style.background = 'white';
-// };
-
-
 
 
 
@@ -454,7 +437,7 @@ buySwordButton.addEventListener('click', () => {
 buttonWorld.addEventListener('click', () => { 
     // Function Pattern for Level Up 
     // Cave Level UP
-    if(caveBool === true && mine1Bool === true && mine2Bool === true && filonMineBool === true && netherBool === true){
+    if(caveBool === true && mine1Bool === true && mine2Bool === true && filonMineBool === true && netherBool === true){ 
         document.location.href = './dragon/index.html'
     }
 
@@ -478,12 +461,12 @@ buttonWorld.addEventListener('click', () => {
                 axePower*=2;
                 pickaxePower*=2;
                 swordPower*=2;
+                nextWorld.innerText = "The End";
                 // Enlever les cookies nécessaire au level up du porte monnaie de l'utilisateur
                 updateRmCookie(cavePrice);
                   // Update visuel
                 updatePrice();
                 updatePower()
-
             }
             else{
                 window.alert("Vous Avez assez d'argent mais pas tout les outils !");
@@ -513,6 +496,7 @@ buttonWorld.addEventListener('click', () => {
                 axePower*=2;
                 pickaxePower*=2;
                 swordPower*=2;
+                nextWorld.innerText = "Nether World";
                 // Enlever les cookies nécessaire au level up du porte monnaie de l'utilisateur
                 updateRmCookie(cavePrice);
                   // Update visuel
@@ -549,6 +533,7 @@ buttonWorld.addEventListener('click', () => {
                 axePower*=2;
                 pickaxePower*=2;
                 swordPower*=2;
+                nextWorld.innerText = "Diamond Mine";
                 // Enlever les cookies nécessaire au level up du porte monnaie de l'utilisateur
                 updateRmCookie(cavePrice);
                   // Update visuel
@@ -585,6 +570,7 @@ buttonWorld.addEventListener('click', () => {
                 axePower*=2;
                 pickaxePower*=2;
                 swordPower*=2;
+                nextWorld.innerText = "Iron Mine";
                 // Enlever les cookies nécessaire au level up du porte monnaie de l'utilisateur
                 updateRmCookie(cavePrice);
                   // Update visuel
@@ -620,6 +606,7 @@ buttonWorld.addEventListener('click', () => {
                 axePower*=2;
                 pickaxePower*=2;
                 swordPower*=2;
+                nextWorld.innerText = "Gold Mine";
                 // Enlever les cookies nécessaire au level up du porte monnaie de l'utilisateur
                 updateRmCookie(cavePrice);
                   // Update visuel
@@ -627,7 +614,6 @@ buttonWorld.addEventListener('click', () => {
                 updateTools();
                 updatePrice();
                 updatePower()
-
             }
             else{
                 window.alert("Vous Avez assez d'argent mais pas tout les outils !");
