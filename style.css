@@ -177,6 +177,51 @@ body {
     transform: rotateY(3.142rad);
 }
 
+.head {
+    display: flex;
+}
+
+.notifications{
+    display: flex;
+    position: relative;
+    left: 50%;
+    justify-content: baseline;
+    align-items: center;
+    padding: 10px;
+    transition: 1s;
+    opacity: 0;
+}
+
+.notifications.active{
+    display: flex;
+    position: relative;
+    left: 50%;
+    justify-content: baseline;
+    align-items: center;
+    padding: 10px;
+    opacity: 1;
+}
+
+.tools{
+    display: flex;
+    position: relative;
+    text-align: center;
+    justify-content: baseline;
+    align-items: center;
+    padding: 10px;
+    transition: 1s;
+    opacity: 0;
+}
+
+.tools.active{
+    display: flex;
+    position: relative;
+    justify-content: baseline;
+    align-items: center;
+    padding: 10px;
+    opacity: 1;
+}
+
 .title {
     display: flex;
     justify-content: center;

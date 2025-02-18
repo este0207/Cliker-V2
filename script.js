@@ -15,6 +15,9 @@ const nbr1 = document.querySelector("#nbr1");
 const nbr2 = document.querySelector("#nbr2");
 const nbr3 = document.querySelector("#nbr3");
 const nbr4 = document.querySelector("#nbr4");
+//notifs
+const notif = document.querySelector(".notifications");
+const notif2 = document.querySelector(".tools");
 
 // Text :
 const text1 = document.getElementById('text1');
@@ -102,7 +105,7 @@ let toolsCount = {
 
 
 // ------Variables Globales----------\\
-let count = 0; // COMPTEUR DES COOKIES
+let count = 10000000000; // COMPTEUR DES COOKIES
 let sec = 0; // COMPTEUR DES COOKIES PAR SECONDES 
 let interval; // Variable Interval
 
@@ -339,6 +342,21 @@ function loadSave() { // LOAD SAUVEGARDE ⛔️⛔️⛔️⛔️⛔️⛔️⛔
     updatePrice()
 }
 
+function notifications1(){
+    notif.classList.add("active");
+    setTimeout(() => {
+        notif.classList.remove("active");
+      }, "2000");
+      
+}
+
+function notifications2(){
+    notif2.classList.add("active");
+    setTimeout(() => {
+        notif2.classList.remove("active");
+      }, "2000");
+}
+
 function retrieveTools() { // FONCTION POUR RELANCER LES EVENTS LISTENERS 
     // DECLA DES VARIABLES TOOLS TEMPORAIRES
     let s;
@@ -435,7 +453,7 @@ buyShovelButton.addEventListener('click', () => {
         }, 1000);
     }
     else if(count<shovelPrice){
-        window.alert("Pas assez de Cookies !");
+        notifications1();
     }
 });
 
@@ -454,7 +472,7 @@ buyAxeButton.addEventListener('click', () => {
         }, 1000);
     }
     else if(count<axePrice){
-        window.alert("Pas assez de Cookies !");
+        notifications1();
     }
 });
 
@@ -473,7 +491,7 @@ buyPickaxeButton.addEventListener('click', () => {
         }, 1000);
     }
     else if(count<pickaxePrice){
-        window.alert("Pas assez de Cookies !");
+        notifications1();
     }
 });
 
@@ -492,7 +510,7 @@ buySwordButton.addEventListener('click', () => {
         }, 1000);
     }
     else if(count<swordPrice){
-        window.alert("Pas assez de Cookies !");
+        notifications1();
     }
 });
 
@@ -534,11 +552,11 @@ buttonWorld.addEventListener('click', () => {
                 updatePower()
             }
             else{
-                window.alert("Vous Avez assez d'argent mais pas tout les outils !");
+                notifications2();
             };
         }
     else if(count<cavePrice){
-        window.alert("Pas assez de Cookies !");
+        notifications1();
         }
     }
     if(caveBool === true && mine1Bool === true && mine2Bool === true && filonMineBool === false && netherBool === false){
@@ -570,11 +588,11 @@ buttonWorld.addEventListener('click', () => {
 
             }
             else{
-                window.alert("Vous Avez assez d'argent mais pas tout les outils !");
+                notifications2();
             };
         }
     else if(count<cavePrice){
-        window.alert("Pas assez de Cookies !");
+        notifications1();
         }
     }
 
@@ -607,11 +625,11 @@ buttonWorld.addEventListener('click', () => {
 
             }
             else{
-                window.alert("Vous Avez assez d'argent mais pas tout les outils !");
+                notifications2();
             };
         }
     else if(count<cavePrice){
-        window.alert("Pas assez de Cookies !");
+        notifications1();
         }
     }
     
@@ -644,11 +662,11 @@ buttonWorld.addEventListener('click', () => {
 
             }
             else{
-                window.alert("Vous Avez assez d'argent mais pas tout les outils !");
+                notifications2();
             };
         }
     else if(count<cavePrice){
-        window.alert("Pas assez de Cookies !");
+        notifications1();
         }
     }
     
@@ -681,11 +699,11 @@ buttonWorld.addEventListener('click', () => {
                 updatePower()
             }
             else{
-                window.alert("Vous Avez assez d'argent mais pas tout les outils !");
+                notifications2();
             };
         }
     else if(count<cavePrice){
-        window.alert("Pas assez de Cookies !");
+        notifications1();
         }
     }
     // Level Up for Mine
