@@ -105,7 +105,7 @@ let toolsCount = {
 
 
 // ------Variables Globales----------\\
-let count = 10000000000; // COMPTEUR DES COOKIES
+let count = 0; // COMPTEUR DES COOKIES
 let sec = 0; // COMPTEUR DES COOKIES PAR SECONDES 
 let interval; // Variable Interval
 
