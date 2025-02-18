@@ -2,16 +2,23 @@
 const dragon = document.querySelector(".dragon");
 const life = document.querySelector("#life");
 const explode = document.querySelector("#explode");
+//buttons
 const button1 = document.querySelector("#add1");
 const button2 = document.querySelector("#add2");
 const button3 = document.querySelector("#add3");
 const button4 = document.querySelector("#add4");
 const buttonEnd = document.querySelector("#add5");
+//notifs
+const notif = document.querySelector(".notifications");
+const notif2 = document.querySelector(".tools");
+
 const screen = document.querySelector(".cookie");
+// Powers
 const price1 = document.querySelector("#power1")
 const price2 = document.querySelector("#power2")
 const price3 = document.querySelector("#power3")
 const price4 = document.querySelector("#power4")
+//count
 count = parseInt(localStorage.getItem('cookieCount'), 10) || count;
 const countDiv = document.getElementById('count');
 const cookieTitleCount = " Cookies - Cookie-Cliker";
@@ -93,6 +100,14 @@ if (vie_boss != 0){
     }, 10);
 }
 
+function notifications1(){
+    notif.classList.add("active");
+    setTimeout(() => {
+        notif.classList.remove("active");
+      }, "2000");
+      
+}
+
 // Quand boss est cliker
 dragon.addEventListener("click", () => {
     life.style.gridTemplateColumns = vie_boss+"% 1fr";
@@ -135,7 +150,7 @@ button1.addEventListener('click', () => {
         
     }
     else if(count<Crystaux1price){
-        window.alert("Pas assez de Cookies !");
+        notifications1()
     }
 });
 button2.addEventListener('click', () => {
@@ -146,7 +161,7 @@ button2.addEventListener('click', () => {
         regen-=5;
     }
     else if(count<Crystaux2price){
-        window.alert("Pas assez de Cookies !");
+        notifications1()
     }
 });
 button3.addEventListener('click', () => {
@@ -157,7 +172,7 @@ button3.addEventListener('click', () => {
         regen-=5;
     }
     else if(count<Crystaux3price){
-        window.alert("Pas assez de Cookies !");
+        notifications1()
     }
 });
 button4.addEventListener('click', () => {
@@ -168,7 +183,7 @@ button4.addEventListener('click', () => {
         regen-=5;
     }
     else if(count<Crystaux4price){
-        window.alert("Pas assez de Cookies !");
+        notifications1()
     }
 });
 
