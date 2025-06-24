@@ -34,3 +34,4 @@ L’objectif final : **vaincre le Dragon en optimisant ta production de blocs**.
    ```bash
    git clone https://github.com/este0207/Cliker-V2
    cd Cliker-V2
+   php -S 0.0.0.0:8080
